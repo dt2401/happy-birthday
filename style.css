@@ -28,6 +28,7 @@ body {
     background-image:linear-gradient(var(--color-pink), var(--color-pink));
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling trên iOS */
+    overscroll-behavior-y: none; /* Ngăn bounce effect trên Safari */
 }
 #wrapper{
     position: relative;
@@ -37,6 +38,7 @@ body {
     background-size: 80px 80px;
     overflow-x: hidden;
     z-index: 1;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling cho wrapper */
 }
 
 /* Music Control Button */
@@ -936,6 +938,7 @@ body {
     .left .btn {
         order: 0; /* Button cuối cùng */
         margin-top: 20px !important;
+        margin-bottom: 80px !important; /* Thêm khoảng cách lớn với 3 ô floating */
         margin-left: auto !important;
         margin-right: auto !important;
         position: relative !important;
@@ -1206,7 +1209,7 @@ body {
     
     .btn {
         margin-top: 15px; /* Button nằm gần ảnh Thanh Nhã */
-        margin-bottom: 40px;
+        margin-bottom: 80px; /* Tăng khoảng cách với floating images */
         order: 1; /* Đặt button sau ảnh */
     }
     
@@ -1216,17 +1219,17 @@ body {
     }
     
     .floating__image--1 {
-        width: 130px !important;
-        height: 130px !important;
+        width: 150px !important; /* Tăng về kích thước ban đầu */
+        height: 150px !important;
     }
     
     .floating__image--3 {
-        width: 110px !important;
-        height: 110px !important;
+        width: 120px !important; /* Tăng về kích thước ban đầu */
+        height: 120px !important;
     }
     
     .floating__image--4 {
-        width: 100px !important;
-        height: 100px !important;
+        width: 115px !important; /* Tăng về kích thước ban đầu */
+        height: 115px !important;
     }
 }
