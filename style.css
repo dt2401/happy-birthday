@@ -36,6 +36,7 @@ body {
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
     min-height: 100vh;
     background-size: 80px 80px;
+    background-attachment: fixed; /* Làm cho background cố định khi scroll */
     overflow-x: hidden;
     z-index: 1;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling cho wrapper */
@@ -902,7 +903,7 @@ body {
 /* responsive mobile */
 @media screen and (max-width:768px) {
     #wrapper {
-        padding-bottom: 400px; /* Tăng padding để scroll xuống thấy 3 floating images */
+        padding-bottom: 200px; /* Giảm padding để loại bỏ khoảng trống thừa */
         overflow-y: auto; /* Cho phép scroll dọc */
     }
     
@@ -938,7 +939,7 @@ body {
     .left .btn {
         order: 0; /* Button cuối cùng */
         margin-top: 20px !important;
-        margin-bottom: 80px !important; /* Thêm khoảng cách lớn với 3 ô floating */
+        margin-bottom: 40px !important; /* Giảm khoảng cách để 3 ô sát lên gần */
         margin-left: auto !important;
         margin-right: auto !important;
         position: relative !important;
@@ -1162,22 +1163,22 @@ body {
     
     /* Hàng đầu - 2 ảnh */
     .floating__image--1 {
-        width: 150px;
-        height: 150px;
-        bottom: 150px !important;
-        left: 10% !important;
+        width: 180px; /* Tăng size lên */
+        height: 180px;
+        bottom: 150px !important; /* Xích xuống xa button hơn */
+        left: 5% !important; /* Điều chỉnh để không đụng */
         z-index: 5;
-        animation: popInFloat 1s 6.5s forwards ease-out, floatMove1 4s 7.5s infinite ease-in-out !important;
+        animation: popInFloat 1s 6.5s forwards ease-out, floatMove1Mobile 6s 7.5s infinite ease-in-out !important;
     }
     
     .floating__image--3 {
-        width: 120px;
-        height: 120px;
-        bottom: 160px !important;
-        right: 10% !important;
+        width: 160px; /* Tăng size lên */
+        height: 160px;
+        bottom: 190px !important; /* Xích xuống xa button hơn */
+        right: 5% !important; /* Điều chỉnh để không đụng */
         left: auto !important;
         z-index: 5;
-        animation: popInFloat 1s 7s forwards ease-out, floatMove2 5s 8s infinite ease-in-out !important;
+        animation: popInFloat 1s 7s forwards ease-out, floatMove2Mobile 7s 8s infinite ease-in-out !important;
     }
     
     /* Chỉ hiển thị 1 ảnh ở dưới */
@@ -1186,13 +1187,37 @@ body {
     }
     
     .floating__image--4 {
-        width: 115px;
-        height: 115px;
-        bottom: 30px !important;
-        right: 35% !important;
-        left: auto !important;
+        width: 150px; /* Tăng size lên */
+        height: 150px;
+        bottom: 20px !important; /* Xích xuống xa button hơn */
+        left: 50% !important; /* Căn giữa */
+        margin-left: -75px !important; /* Center bằng negative margin thay vì transform */
+        right: auto !important;
         z-index: 5;
-        animation: popInFloat 1s 7.5s forwards ease-out, floatMove4 5.5s 8.5s infinite ease-in-out !important;
+        animation: popInFloat 1s 7.5s forwards ease-out, floatMove4Mobile 8s 8.5s infinite ease-in-out !important;
+    }
+    
+    /* Animation cho floating ảnh trái */
+    @keyframes floatMove1Mobile {
+        0%, 100% { transform: translateY(0px); }
+        25% { transform: translateY(-15px); }
+        50% { transform: translateY(-8px); }
+        75% { transform: translateY(-12px); }
+    }
+    
+    /* Animation cho floating ảnh phải */
+    @keyframes floatMove2Mobile {
+        0%, 100% { transform: translateY(0px); }
+        33% { transform: translateY(-12px); }
+        66% { transform: translateY(-18px); }
+    }
+    
+    /* Animation cho floating ảnh giữa, giữ nguyên vị trí center */
+    @keyframes floatMove4Mobile {
+        0%, 100% { transform: translateY(0px); }
+        25% { transform: translateY(-15px); }
+        50% { transform: translateY(-8px); }
+        75% { transform: translateY(-12px); }
     }
 }
 
@@ -1209,7 +1234,7 @@ body {
     
     .btn {
         margin-top: 15px; /* Button nằm gần ảnh Thanh Nhã */
-        margin-bottom: 80px; /* Tăng khoảng cách với floating images */
+        margin-bottom: 40px; /* Giảm khoảng cách với floating images */
         order: 1; /* Đặt button sau ảnh */
     }
     
@@ -1219,17 +1244,17 @@ body {
     }
     
     .floating__image--1 {
-        width: 150px !important; /* Tăng về kích thước ban đầu */
-        height: 150px !important;
+        width: 180px !important; /* Tăng về kích thước to hơn */
+        height: 180px !important;
     }
     
     .floating__image--3 {
-        width: 120px !important; /* Tăng về kích thước ban đầu */
-        height: 120px !important;
+        width: 160px !important; /* Tăng về kích thước to hơn */
+        height: 160px !important;
     }
     
     .floating__image--4 {
-        width: 115px !important; /* Tăng về kích thước ban đầu */
-        height: 115px !important;
+        width: 150px !important; /* Tăng về kích thước to hơn */
+        height: 150px !important;
     }
 }
