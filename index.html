@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy birthday</title>
+    <title>Happy Birthday Thanh Nhã</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+    <meta property="og:image"
+        content="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!-- Background Music -->
     <audio id="bgMusic" loop autoplay>
         <source src="./audio/happy-birthday-to-you-piano-version-13976.mp3" type="audio/mpeg">
     </audio>
-    
+
     <!-- Music Control Button -->
     <button id="musicToggle" class="music-control">
         <i class="fa-solid fa-music"></i>
     </button>
-    
+
     <div id="wrapper">
         <div class="flag__birthday">
             <img src="./images/1.png" alt="" width="350" class="flag__left">
@@ -49,7 +58,7 @@
                         <span style="--t: 6.2s;">a</span>
                         <span style="--t: 6.4s;">y</span>
                     </h1>
-                    
+
                 </div>
                 <div class="date__of__birth">
                     <span></span>
@@ -99,7 +108,7 @@
                     <i class="fa-solid fa-heart"></i>
                 </div>
                 <span class="day">
-                    
+
                 </span>
                 <span class="month"></span>
             </div>
@@ -139,7 +148,7 @@
             <img src="./images/tnha2.jpg" alt="">
         </div>
 
-        
+
 
         <div class="box__letter">
             <div class="letter__border">
@@ -159,7 +168,7 @@
                                 <img src="./images/flower.png" alt="" width="220">
                             </div>
                             <div class="text__letter">
-                                 <p></p>
+                                <p></p>
                             </div>
                             <img id="mewmew" width="80" src="./images/mewmew.gif" alt="">
                         </div>
@@ -186,11 +195,11 @@
 
     // Function to play music
     function playMusic() {
-        bgMusic.play().then(function() {
+        bgMusic.play().then(function () {
             isPlaying = true;
             musicToggle.classList.add('playing');
             console.log("Music playing");
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Cannot play:", error);
             isPlaying = false;
         });
@@ -201,20 +210,20 @@
 
     // Also try on first user interaction (click, touch, keypress)
     const events = ['click', 'touchstart', 'keydown'];
-    events.forEach(function(event) {
+    events.forEach(function (event) {
         document.addEventListener(event, function startMusic() {
             if (!isPlaying) {
                 playMusic();
             }
             // Remove all listeners after first interaction
-            events.forEach(function(e) {
+            events.forEach(function (e) {
                 document.removeEventListener(e, startMusic);
             });
         }, { once: true });
     });
 
     // Toggle music on button click
-    musicToggle.addEventListener('click', function(e) {
+    musicToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         if (isPlaying) {
             bgMusic.pause();
@@ -236,69 +245,69 @@
     let currentIndexTitle = 0;
     let date__of__birth = document.querySelector(".date__of__birth span");
     let text__letter = document.querySelector(".text__letter p");
-    setTimeout(function(){
-        timeDatetxt = setInterval(function(){
-            if(currentIndex < charArrDate.length){
+    setTimeout(function () {
+        timeDatetxt = setInterval(function () {
+            if (currentIndex < charArrDate.length) {
                 date__of__birth.textContent += charArrDate[currentIndex];
                 currentIndex++;
             }
-            else{
+            else {
                 let i = document.createElement("i");
                 i.className = "fa-solid fa-star"
                 document.querySelector(".date__of__birth").prepend(i)
                 document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
                 clearInterval(timeDatetxt)
             }
-        },100)
-    },12000)
+        }, 100)
+    }, 12000)
 
     var intervalContent;
     var intervalTitle;
-    $("#btn__letter").on("click", function(){
+    $("#btn__letter").on("click", function () {
         $(".box__letter").slideDown()
-        setTimeout(function(){
+        setTimeout(function () {
             $(".letter__border").slideDown();
-        },1000)
-        setTimeout(function(){
-            intervalTitle = setInterval(function(){
-                if(currentIndexTitle < charArrTitle.length){
+        }, 1000)
+        setTimeout(function () {
+            intervalTitle = setInterval(function () {
+                if (currentIndexTitle < charArrTitle.length) {
                     document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
                     let i = document.createElement("i");
                     i.className = "fa-solid fa-heart"
                     document.querySelector(".title__letter").appendChild(i)
                     currentIndexTitle++;
                 }
-                else{
+                else {
                     clearInterval(intervalTitle)
                 }
-            },100)
-        },2000)
-        setTimeout(function(){
+            }, 100)
+        }, 2000)
+        setTimeout(function () {
             document.querySelector("#heart__letter").classList.add("animationOp");
             document.querySelector(".love__img").classList.add("animationOp");
             document.querySelector("#mewmew").classList.add("animationOp");
-        },2800)
-        setTimeout(function(){
-            document.querySelectorAll(".heart").forEach((item)=>{
+        }, 2800)
+        setTimeout(function () {
+            document.querySelectorAll(".heart").forEach((item) => {
                 item.classList.add("animation")
             })
-        },3500)
-        setTimeout(function(){
-            intervalContent = setInterval(function(){
-                if(currentIndexLetter < charArrDateLetter.length){
+        }, 3500)
+        setTimeout(function () {
+            intervalContent = setInterval(function () {
+                if (currentIndexLetter < charArrDateLetter.length) {
                     text__letter.textContent += charArrDateLetter[currentIndexLetter];
                     currentIndexLetter++;
                 }
-                else{
+                else {
                     clearInterval(intervalContent)
                 }
-            },50)
-        },6000)
-        setTimeout(function(){
+            }, 50)
+        }, 6000)
+        setTimeout(function () {
             document.querySelector(".bottom__note").classList.add("animationOp");
-        },8000)
+        }, 8000)
     })
-    $(".close").on("click", function(){
+    $(".close").on("click", function () {
         clearInterval(intervalContent)
         document.querySelector(".title__letter").textContent = "";
         text__letter.textContent = "";
@@ -308,9 +317,9 @@
         document.querySelector(".love__img").classList.remove("animationOp");
         document.querySelector("#mewmew").classList.remove("animationOp");
         document.querySelector(".bottom__note").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item)=>{
-                item.classList.remove("animation")
-            })
+        document.querySelectorAll(".heart").forEach((item) => {
+            item.classList.remove("animation")
+        })
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
     })
@@ -318,33 +327,34 @@
 
     //mobile
 
-    function mobile(){
+    function mobile() {
         const app = {
-            timeout: function(txt, dom){
+            timeout: function (txt, dom) {
                 let currentIndex = 0;
                 let charArr = txt.split('')
-                intervalMobile = setInterval(function(){
-                    if(currentIndex < charArr.length){
+                intervalMobile = setInterval(function () {
+                    if (currentIndex < charArr.length) {
                         dom.textContent += charArr[currentIndex];
                         currentIndex++;
                     }
-                    else{
+                    else {
                         clearInterval(intervalMobile)
                     }
-                },200)
+                }, 200)
             }
         }
         return app
     }
     const fcMobile = mobile()
-    if(window.innerWidth < 768){
-        setTimeout(()=>{
+    if (window.innerWidth < 768) {
+        setTimeout(() => {
             fcMobile.timeout("06", document.querySelector(".day"))
-        },5000)
-        setTimeout(()=>{
+        }, 5000)
+        setTimeout(() => {
             fcMobile.timeout("10", document.querySelector(".month"))
-        },6000)
+        }, 6000)
     }
-    
+
 </script>
+
 </html>
