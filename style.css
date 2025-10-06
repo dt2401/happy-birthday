@@ -900,7 +900,7 @@ body {
 /* responsive mobile */
 @media screen and (max-width:768px) {
     #wrapper {
-        padding-bottom: 250px; /* Tăng padding để có đủ chỗ scroll */
+        padding-bottom: 400px; /* Tăng padding để scroll xuống thấy 3 floating images */
         overflow-y: auto; /* Cho phép scroll dọc */
     }
     
