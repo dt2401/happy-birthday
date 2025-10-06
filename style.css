@@ -903,7 +903,7 @@ body {
 /* responsive mobile */
 @media screen and (max-width:768px) {
     #wrapper {
-        padding-bottom: 200px; /* Giảm padding để loại bỏ khoảng trống thừa */
+        padding-bottom: 300px; /* Giảm padding để loại bỏ khoảng trống thừa */
         overflow-y: auto; /* Cho phép scroll dọc */
     }
     
