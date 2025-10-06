@@ -17,6 +17,7 @@
 }
 html{
     height: 100%;
+    scroll-behavior: smooth; /* Thêm smooth scroll */
 }
 body {
     position: relative;
@@ -26,6 +27,7 @@ body {
     min-height: 100vh;
     background-image:linear-gradient(var(--color-pink), var(--color-pink));
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling trên iOS */
 }
 #wrapper{
     position: relative;
@@ -898,7 +900,8 @@ body {
 /* responsive mobile */
 @media screen and (max-width:768px) {
     #wrapper {
-        padding-bottom: 200px; /* Thêm padding để có thể scroll xem full content */
+        padding-bottom: 250px; /* Tăng padding để có đủ chỗ scroll */
+        overflow-y: auto; /* Cho phép scroll dọc */
     }
     
     .flag__birthday{
@@ -916,15 +919,48 @@ body {
     }
     #wrapper .content{
         flex-direction: column;
+        min-height: auto; /* Cho phép content tự điều chỉnh chiều cao */
+        display: flex;
     }
+    
+    /* Sắp xếp thứ tự: Title -> Right (ảnh) -> Button */
+    #wrapper .content .left .title{
+        order: -2; /* Title lên đầu */
+    }
+    
+    #wrapper .content .right{
+        order: -1; /* Ảnh ở giữa */
+        margin-top: 20px;
+    }
+    
+    .left .btn {
+        order: 0; /* Button cuối cùng */
+        margin-top: 20px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        position: relative !important;
+        display: block !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
     #wrapper .content .left{
         position: unset;
+        margin-bottom: 10px;
+        display: contents; /* Cho phép children của .left trở thành direct children của .content */
     }
+    
     #wrapper .content .left,#wrapper .content .right{
         width: 100%!important;
     }
+    
     #wrapper .content .left .title{
         font-size: 2rem;
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .happy span:nth-child(1){
         animation-delay: 1s;
@@ -978,18 +1014,24 @@ body {
     .btn{
         position: relative;
         bottom: auto;
-        margin-top: 30px;
+        margin-top: 20px; /* Giảm margin để button nằm gần ảnh */
+        margin-bottom: 30px; /* Thêm margin bottom */
+        z-index: 10; /* Đảm bảo button luôn hiển thị trên cùng */
+        order: 1; /* Đặt button sau ảnh trong flex order */
     }
     #wrapper .content .right{
-        margin-top: 40px;
+        margin-top: 20px; /* Trở lại margin bình thường */
     }
     .right .box__account{
         display: flex;
+        flex-direction: column; /* Đổi thành column để layout dọc */
         justify-content: center;
+        align-items: center; /* Center alignment */
         width: 100%;
         transform: translateY(0) !important;
         opacity: 1 !important;
         animation: none!important;
+        margin-top: 20px; /* Trở lại margin bình thường */
     }
     .right .box__account .image{
         width: 200px;
@@ -1148,5 +1190,43 @@ body {
         left: auto !important;
         z-index: 5;
         animation: popInFloat 1s 7.5s forwards ease-out, floatMove4 5.5s 8.5s infinite ease-in-out !important;
+    }
+}
+
+/* Tối ưu riêng cho iPhone 13 Pro Max */
+@media screen and (max-width: 428px) and (max-height: 926px) {
+    #wrapper .content .left .title {
+        font-size: 1.8rem; /* Giảm size cho iPhone 13 Pro Max */
+        margin-bottom: 25px;
+    }
+    
+    #wrapper .content .right{
+        margin-top: 20px; /* Trở lại margin bình thường */
+    }
+    
+    .btn {
+        margin-top: 15px; /* Button nằm gần ảnh Thanh Nhã */
+        margin-bottom: 40px;
+        order: 1; /* Đặt button sau ảnh */
+    }
+    
+    .right .box__account .image {
+        width: 180px; /* Trở lại size ban đầu */
+        height: 180px;
+    }
+    
+    .floating__image--1 {
+        width: 130px !important;
+        height: 130px !important;
+    }
+    
+    .floating__image--3 {
+        width: 110px !important;
+        height: 110px !important;
+    }
+    
+    .floating__image--4 {
+        width: 100px !important;
+        height: 100px !important;
     }
 }
